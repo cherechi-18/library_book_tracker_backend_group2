@@ -8,7 +8,7 @@ export class BookService {
     // read  boookinfo from books.json through fileHandler.js
     const books = await readBookInfo();
     // make a new book object with properties
-    console.log(books.length);
+   
     const createdBook = {
       id: String(books.length + 1), // Generate a unique ID based on the current timestamp
       title: bookInfo.title,
