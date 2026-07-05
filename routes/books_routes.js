@@ -50,5 +50,4 @@ bookRouter.get("/onebook/:id", async (req, res) => {
     res.status(500).json({ message: "Error getting book", error: err.message });
   }
 });
-// both tasks are using the same bookRouter
 export default bookRouter;
