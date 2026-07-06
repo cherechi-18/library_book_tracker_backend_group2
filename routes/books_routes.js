@@ -28,10 +28,10 @@ bookRouter.get("/allbooks", async (req, res) => {
       return res.status(200).json({ message: "No Books Found" });
     }
     res.status(200).render("index", { bookList: allBooks });
-  } catch (err) {
+  } catch (error) {
     res
       .status(500)
-      .json({ message: "Error getting books", error: err.message });
+      .json({ message: "Error getting books", error: error.message });
   }
 });
 
@@ -46,8 +46,10 @@ bookRouter.get("/onebook/:id", async (req, res) => {
         .json({ message: "Book not found", error: err.message });
     }
     res.status(200).render("bookdetails", { book: book });
-  } catch (err) {
-    res.status(500).json({ message: "Error getting book", error: err.message });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error getting book", error: error.message });
   }
 });
 export default bookRouter;

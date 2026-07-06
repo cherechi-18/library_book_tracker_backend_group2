@@ -8,7 +8,7 @@ export class BookService {
     // read  boookinfo from books.json through fileHandler.js
     const books = await readBookInfo();
     // make a new book object with properties
-   
+
     const createdBook = {
       id: String(books.length + 1), // auto updating from 1
       title: bookInfo.title,
@@ -34,6 +34,9 @@ export class BookService {
     // read the book details from books.json using fileHandler.js
     const books = await readBookInfo();
     const currentBook = books.find((book) => book.id === id);
+    if (!currentBook) {
+      throw Error("Invalid Book ID");
+    }
     return currentBook;
   }
 }
