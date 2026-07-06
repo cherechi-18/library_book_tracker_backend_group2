@@ -40,7 +40,7 @@ bookRouter.get("/allbooks", async (req, res) => {
 bookRouter.get("/onebook/:id", async (req, res) => {
   try {
     const book = await bookService.getOneBook(req.params.id);
-    if (book === undefined || null) {
+    if (!book) {
       return res
         .status(404)
         .json({ message: "Book not found", error: err.message });
