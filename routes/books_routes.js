@@ -20,4 +20,18 @@ bookRouter.post("/resources", async (req, res) => {
         res.json({ message: "Error adding book", error: error.message });
     }
     });
+
+// task 2 to get just one book by id
+// example url: http://localhost/books/onebook/2 where 2 is the book id.
+bookRouter.get("/onebook/:id", async (req, res) => {
+  try {
+    const book = await bookService.getOneBook(req.params.id);
+    if (!book) {
+      return res.status(404).json({ message: "Book not found", error: err.message });
+    }
+    res.status(200).render("bookdetails", { book: book });
+  } catch (error) {
+    res.status(500).json({ message: "Error getting book", error: error.message });
+  }
+});
     export default bookRouter;
