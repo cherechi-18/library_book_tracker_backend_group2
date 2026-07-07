@@ -15,7 +15,7 @@ libraryApp.get("/", (req, res) => {
 });
 libraryApp.use("/books", bookRouter);// connect the bookRouter to the /books path
 libraryApp.use((req, res) => {
-    res.status(404)
+    res.status(404);
     res.json({ message: "Route not found" });
 });
 // START THE SERVER
