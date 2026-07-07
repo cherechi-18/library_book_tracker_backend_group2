@@ -20,6 +20,22 @@ export class BookService {
         books.push(createdBook);
         await writeBookInfo(books);
         return createdBook;
-
 }
+
+  // task two read and display books.
+  async getAllBooks() {
+    // read the book details from books.json using fileHandler.js
+    const books = await readBookInfo();
+    return books;
+  }
+
+  async getOneBook(id) {
+    // read the book details from books.json using fileHandler.js
+    const books = await readBookInfo();
+    const currentBook = books.find((book) => book.id === id);
+    if (!currentBook) {
+      throw Error("Invalid Book ID");
+    }
+    return currentBook;
+  }
 }
