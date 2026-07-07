@@ -1,31 +1,98 @@
 [
-<<<<<<< HEAD
   {
-    "id": 1,
-    "title": "The love",
-    "author": "Mary",
+    "id": 1728881800000,
+    "title": "Educated",
+    "author": "Tara Westover",
     "available": true,
-    "createdAt": "2026-07-06T10:20:07.990Z",
-    "updatedAt": "2026-07-06T10:20:07.993Z"
+    "createdAt": "2026-04-20T13:25:40.000Z",
+    "updatedAt": "2026-04-20T13:25:40.000Z"
   },
   {
-    "id": 2,
-    "title": "The shop",
-    "author": "Mary",
+    "id": 1728881900000,
+    "title": "1984",
+    "author": "George Orwell",
     "available": true,
-    "createdAt": "2026-07-06T10:20:18.604Z",
-    "updatedAt": "2026-07-06T10:20:18.607Z"
+    "createdAt": "2026-04-21T07:40:55.000Z",
+    "updatedAt": "2026-04-21T07:40:55.000Z"
   },
   {
-    "id": 3,
-    "title": "The Swallow",
-    "author": "Jane",
+    "id": 1728882000000,
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
     "available": true,
-    "createdAt": "2026-07-06T16:02:43.880Z",
-    "updatedAt": "2026-07-06T16:02:43.894Z"
+    "createdAt": "2026-04-22T12:05:20.000Z",
+    "updatedAt": "2026-04-22T12:05:20.000Z"
+  },
+  {
+    "id": 1728882100000,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "available": false,
+    "createdAt": "2026-04-23T09:50:35.000Z",
+    "updatedAt": "2026-04-23T09:50:35.000Z"
+  },
+  {
+    "id": 1783444753057,
+    "title": "The Shadow of the Wind",
+    "author": "Carlos Ruiz Zafón",
+    "available": true,
+    "createdAt": "2026-07-07T17:19:13.057Z",
+    "updatedAt": "2026-07-07T17:19:13.061Z"
+  },
+  {
+    "id": 1783444769760,
+    "title": "A Game of Thrones",
+    "author": "George R.R. Martin",
+    "available": true,
+    "createdAt": "2026-07-07T17:19:29.760Z",
+    "updatedAt": "2026-07-07T17:19:29.761Z"
+  },
+  {
+    "id": 1783444788271,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "available": true,
+    "createdAt": "2026-07-07T17:19:48.271Z",
+    "updatedAt": "2026-07-07T17:19:48.271Z"
+  },
+  {
+    "id": 1783444811608,
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "available": true,
+    "createdAt": "2026-07-07T17:20:11.608Z",
+    "updatedAt": "2026-07-07T17:20:11.613Z"
+  },
+  {
+    "id": 1783444829297,
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "available": true,
+    "createdAt": "2026-07-07T17:20:29.297Z",
+    "updatedAt": "2026-07-07T17:20:29.299Z"
+  },
+  {
+    "id": 1783444844689,
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "available": true,
+    "createdAt": "2026-07-07T17:20:44.689Z",
+    "updatedAt": "2026-07-07T17:20:44.691Z"
+  },
+  {
+    "id": 1783444862411,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "available": true,
+    "createdAt": "2026-07-07T17:21:02.411Z",
+    "updatedAt": "2026-07-07T17:21:02.413Z"
+  },
+  {
+    "id": 1783444892541,
+    "title": "The Kite Runner",
+    "author": "Khaled Hosseini",
+    "available": true,
+    "createdAt": "2026-07-07T17:21:32.541Z",
+    "updatedAt": "2026-07-07T17:21:32.541Z"
   }
 ]
-=======
-  
-]
->>>>>>> 522b1115612a318ce6212700383369d040bf6ed5
