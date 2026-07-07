@@ -7,6 +7,8 @@ import bookRouter from "./routes/books_routes.js";
 
 const libraryApp = express();
 const PORT = 3000;
+libraryApp.set("view engine", "ejs"); // task 2 to be able to render the index.ejs
+
 libraryApp.use(express.json()); // necessary middleware to parse JSON request bodies
 libraryApp.get("/", (req, res) => {
     res.json({ message: "Welcome to the Library Book Tracker API" });
