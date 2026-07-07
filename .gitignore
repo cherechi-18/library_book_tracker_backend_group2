@@ -1,3 +1,10 @@
 node_modules
 *.log
+<<<<<<< HEAD
+.DS_Store
+Thumbs.db
 .comments.txt
+package-lock.json
+=======
+.comments.txt
+>>>>>>> 89051a7c4bf53c99b8f2673ade67cf71a5eedb5d

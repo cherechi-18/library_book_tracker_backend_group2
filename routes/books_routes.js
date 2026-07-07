@@ -20,6 +20,7 @@ bookRouter.post("/resources", async (req, res) => {
     res.json({ message: "Error adding book", error: error.message });
   }
 });
+<<<<<<< HEAD
 
 bookRouter.patch("/borrow/:id", async (req, res) => {
   try {
@@ -53,6 +54,38 @@ bookRouter.patch("/return/:id", async (req, res) => {
     res
       .status(500)
       .json({ message: "Error Returning Book", error: error.message });
+=======
+// task 2 to get all books and send the to the index.ejs file for displaying
+bookRouter.get("/allbooks", async (req, res) => {
+  try {
+    const allBooks = await bookService.getAllBooks();
+    if (allBooks.length === 0) {
+      return res.status(200).json({ message: "No Books Found" });
+    }
+    res.status(200).render("index", { bookList: allBooks });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error getting books", error: error.message });
+  }
+});
+
+// task 2 to get just one book by id
+// example url: http://localhost/books/onebook/2    where 2 is the book id.
+bookRouter.get("/onebook/:id", async (req, res) => {
+  try {
+    const book = await bookService.getOneBook(req.params.id);
+    if (!book) {
+      return res
+        .status(404)
+        .json({ message: "Book not found", error: err.message });
+    }
+    res.status(200).render("bookdetails", { book: book });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error getting book", error: error.message });
+>>>>>>> 522b1115612a318ce6212700383369d040bf6ed5
   }
 });
 export default bookRouter;

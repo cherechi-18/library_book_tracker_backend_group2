@@ -19,7 +19,7 @@ export class BookService {
     // make a new book object with properties
 
     const createdBook = {
-      id: lastId + 1, // Generate add one to the lastId. This avoids any error that comes with Deleting item.
+      id: String(Date.now()), // Generate a unique ID based on the current timestamp
       title: bookInfo.title,
       author: bookInfo.author,
       available: true, // New books are available by default
