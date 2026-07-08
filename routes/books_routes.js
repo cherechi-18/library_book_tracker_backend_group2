@@ -60,6 +60,7 @@ bookRouter.get("/onebook/:id", async (req, res) => {
 });
 
 bookRouter.put("/update/:id", validateEditBookReq, async (req, res) => {
+  // added update to the route
   try {
     const id = req.params.id; // changed from const { id } = req.params;
 
