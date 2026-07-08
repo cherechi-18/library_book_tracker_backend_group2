@@ -65,13 +65,15 @@ export async function confirmNewBook(bookInfo) {
   return;
 }
 
-const validateEditBookReq = (req, res) => {
+export const validateEditBookReq = (req, res, next) => {
   // to declear the properties that can be changed
   const allowedupdates = ["title", "author"];
 
   // to make sure an empty req.cody is not been sent
   const request = req.body;
-  if (!request) {
+  console.log(request);
+  if (!request || Object.keys(request).length === 0) {
+    // added Object.keys(request).length === 0
     return res.status(400).json({ error: "Field not sent!" });
   }
 
@@ -84,12 +86,12 @@ const validateEditBookReq = (req, res) => {
   }
 
   // to make sure the keys been edited are approved
-  constReqKeys = Object.keys(request);
+  const constReqKeys = Object.keys(request);
 
   const isApproved = constReqKeys.every((key) => allowedupdates.includes(key));
   if (!isApproved) {
     res.status(400).json({ error: "Input not Valid" });
   }
 
-  return;
+  next();
 };

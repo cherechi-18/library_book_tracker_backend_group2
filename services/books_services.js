@@ -3,7 +3,7 @@
 // Uses fileHandler (read/write JSON) to update books.json
 
 import { readBookInfo, writeBookInfo } from "../utils/fileHandler.js";
-import { checkBookExist } from "../utils/validation.js";
+import { checkBookExist, confirmNewBook } from "../utils/validation.js";
 export class BookService {
   async addBook(bookInfo) {
     // to check if book already exists
@@ -21,10 +21,61 @@ export class BookService {
       updatedAt: new Date().toISOString(), // Store the last updated date in ISO format
     };
 
+    // validate book about to be saved
+    await confirmNewBook(createdBook);
     // Add the new book to the books array and write it back to the JSON file
     books.push(createdBook);
     await writeBookInfo(books);
     return createdBook;
+  }
+
+  // task two read and display books.
+  async getAllBooks() {
+    // read the book details from books.json using fileHandler.js
+    const books = await readBookInfo();
+    return books;
+  }
+
+  async getOneBook(id) {
+    // read the book details from books.json using fileHandler.js
+    const books = await readBookInfo();
+    const currentBook = books.find((book) => book.id == id);
+    if (!currentBook) {
+      throw Error("Invalid Book ID");
+    }
+    return currentBook;
+  }
+
+  async updateBook(id, updatedData) {
+    // Read all books
+    const books = await readBookInfo();
+
+    // Find the book
+    const book = books.find((book) => book.id == id);
+
+    // Return null if not found
+    if (!book) {
+      throw Error("Invalid Book ID"); // changed this from return null
+    }
+
+    // Update only the fields provided
+    if (updatedData.title) {
+      book.title = updatedData.title;
+    }
+
+    if (updatedData.author) {
+      book.author = updatedData.author;
+    }
+
+    // Update timestamp
+    book.updatedAt = new Date().toISOString();
+
+    // validate book about to be saved
+    await confirmNewBook(book);
+    // Save the updated books
+    await writeBookInfo(books);
+
+    return book;
   }
 
   // Task 5  Borrowing and Returning books
@@ -73,5 +124,21 @@ export class BookService {
     await writeBookInfo(books);
     status = true;
     return status;
+  }
+
+  async deleteBook(id) {
+    // Read all books
+    const books = await readBookInfo();
+    // Find the index of the book
+    const index = books.findIndex((book) => book.id == id);
+    // If the book doesn't exist
+    if (index === -1) {
+      throw Error("Invalid Book ID"); // changed this from return null
+    }
+    // Remove the book and store it
+    const deletedBook = books.splice(index, 1)[0];
+    // Save the updated array
+    await writeBookInfo(books);
+    return deletedBook;
   }
 }

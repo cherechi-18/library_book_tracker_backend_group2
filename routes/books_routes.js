@@ -4,7 +4,10 @@
 
 import { Router } from "express";
 import { BookService } from "../services/books_services.js";
-import { validateAddBookReq } from "../utils/validation.js";
+import {
+  validateAddBookReq,
+  validateEditBookReq,
+} from "../utils/validation.js";
 
 const bookRouter = Router();
 const bookService = new BookService();
@@ -33,25 +36,49 @@ bookRouter.get("/allbooks", async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ message: "Error adding book", error: error.message });
+      .json({ message: "Error getting books", error: error.message });
   }
 });
 
 // task 2 to get just one book by id
 // example url: http://localhost/books/onebook/2 where 2 is the book id
 
-// task 2 to get all books and send the to the index.ejs file for displaying
-bookRouter.get("/allbooks", async (req, res) => {
+bookRouter.get("/onebook/:id", async (req, res) => {
   try {
-    const allBooks = await bookService.getAllBooks();
-    if (allBooks.length === 0) {
-      return res.status(200).json({ message: "No Books Found" });
+    const book = await bookService.getOneBook(req.params.id);
+    if (!book) {
+      return res
+        .status(404)
+        .json({ message: "Book not found", error: err.message });
     }
-    res.status(200).render("index", { bookList: allBooks });
+    res.status(200).render("bookdetails", { book: book });
   } catch (error) {
     res
       .status(500)
-      .json({ message: "Error getting books", error: error.message });
+      .json({ message: "Error getting book", error: error.message });
+  }
+});
+
+bookRouter.put("/update/:id", validateEditBookReq, async (req, res) => {
+  try {
+    const id = req.params.id; // changed from const { id } = req.params;
+
+    const updatedBook = await bookService.updateBook(id, req.body);
+
+    if (!updatedBook) {
+      return res.status(404).json({
+        message: "Book not found",
+        error: error.message, // added this removed success: false
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Book updated successfully",
+      data: updatedBook,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
@@ -73,6 +100,7 @@ bookRouter.patch("/borrow/:id", async (req, res) => {
 });
 
 bookRouter.patch("/return/:id", async (req, res) => {
+  // added return to the route path
   try {
     console.log(req.params.id);
     const isReturned = await bookService.returnBook(req.params.id);
@@ -89,4 +117,26 @@ bookRouter.patch("/return/:id", async (req, res) => {
   }
 });
 
+bookRouter.delete("/delete/:id", async (req, res) => {
+  // added delete to the route path
+  try {
+    const id = req.params.id; // changed from const { id } = req.params;
+
+    const deletedBook = await bookService.deleteBook(id);
+
+    if (!deletedBook) {
+      return res
+        .status(404)
+        .json({ message: "Book not found", error: error.message }); // added this removed success: false
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Book deleted successfully",
+      data: deletedBook,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
 export default bookRouter;

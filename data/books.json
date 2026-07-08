@@ -3,7 +3,7 @@
     "id": 1728881800000,
     "title": "Educated",
     "author": "Tara Westover",
-    "available": true,
+    "available": false,
     "createdAt": "2026-04-20T13:25:40.000Z",
     "updatedAt": "2026-04-20T13:25:40.000Z"
   },
@@ -102,5 +102,21 @@
     "available": true,
     "createdAt": "2026-07-08T12:19:28.769Z",
     "updatedAt": "2026-07-08T12:19:28.770Z"
+  },
+  {
+    "id": 1783514578507,
+    "title": "The Boys in the Boat",
+    "author": "Daniel James Brown",
+    "available": true,
+    "createdAt": "2026-07-08T12:42:58.507Z",
+    "updatedAt": "2026-07-08T14:10:07.009Z"
+  },
+  {
+    "id": 1783519742452,
+    "title": "Twilight",
+    "author": "Stephenie Meyer",
+    "available": true,
+    "createdAt": "2026-07-08T14:09:02.452Z",
+    "updatedAt": "2026-07-08T14:09:02.455Z"
   }
 ]
