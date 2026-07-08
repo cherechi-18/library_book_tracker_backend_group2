@@ -1,3 +1,0 @@
-JSON file that stores all book records
-Acts as the "database" for the project
-Starts as an empty array:
