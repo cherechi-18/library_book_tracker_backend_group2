@@ -8,11 +8,14 @@ export const validateAddBookReq = (req, res, next) => {
   // destructure the req.body
   const { title, author } = req.body;
 
+  // making sire the requset is not sending an empty object
   if (!title || !author) {
     return res
       .status(400)
       .json({ error: "Missing required field title or author" });
   }
+
+  // making sure the inputs sent are Strings
 
   if (typeof title !== "string" || typeof author !== "string") {
     return res.status(400).json({ error: "Invalid field title or author" });
@@ -61,3 +64,32 @@ export async function confirmNewBook(bookInfo) {
 
   return;
 }
+
+const validateEditBookReq = (req, res) => {
+  // to declear the properties that can be changed
+  const allowedupdates = ["title", "author"];
+
+  // to make sure an empty req.cody is not been sent
+  const request = req.body;
+  if (!request) {
+    return res.status(400).json({ error: "Field not sent!" });
+  }
+
+  // to confirm all the items in the req.body are Strings
+  const values = Object.values(request);
+
+  const isValid = values.every((item) => typeof item === "string");
+  if (!isValid) {
+    return res.status(400).json({ error: "Invalid Field" });
+  }
+
+  // to make sure the keys been edited are approved
+  constReqKeys = Object.keys(request);
+
+  const isApproved = constReqKeys.every((key) => allowedupdates.includes(key));
+  if (!isApproved) {
+    res.status(400).json({ error: "Input not Valid" });
+  }
+
+  return;
+};
