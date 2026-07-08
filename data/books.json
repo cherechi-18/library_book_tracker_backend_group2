@@ -94,5 +94,13 @@
     "available": true,
     "createdAt": "2026-07-07T17:21:32.541Z",
     "updatedAt": "2026-07-07T17:21:32.541Z"
+  },
+  {
+    "id": 1783513168769,
+    "title": "The Glass Castle",
+    "author": "Jeannette Walls",
+    "available": true,
+    "createdAt": "2026-07-08T12:19:28.769Z",
+    "updatedAt": "2026-07-08T12:19:28.770Z"
   }
 ]
