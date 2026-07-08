@@ -83,10 +83,10 @@ bookRouter.put("/update/:id", validateEditBookReq, async (req, res) => {
   }
 });
 
-bookRouter.patch("/borrow/:id", async (req, res) => {
+bookRouter.get("/borrow/:id", async (req, res) => {
   try {
     const isAvailable = await bookService.borrowBook(req.params.id);
-    console.log(isAvailable);
+
     if (isAvailable === false) {
       return res
         .status(200)
@@ -100,10 +100,9 @@ bookRouter.patch("/borrow/:id", async (req, res) => {
   }
 });
 
-bookRouter.patch("/return/:id", async (req, res) => {
+bookRouter.get("/return/:id", async (req, res) => {
   // added return to the route path
   try {
-    console.log(req.params.id);
     const isReturned = await bookService.returnBook(req.params.id);
     if (isReturned === false) {
       return res
